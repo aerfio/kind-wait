@@ -13,7 +13,7 @@ to be ready or completed. I personally use it to wait for [kind](https://kind.si
 ## Installation
 
 ```
-go install github.com/aerfio/kind-wait@main
+go install github.com/aerfio/kind-wait@latest
 ```
 
 ## Usage
