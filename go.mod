@@ -3,6 +3,7 @@ module github.com/aerfio/kind-wait
 go 1.20
 
 require (
+	github.com/carlmjohnson/versioninfo v0.22.5
 	github.com/go-logr/logr v1.2.4
 	github.com/go-logr/zapr v1.2.4
 	github.com/sourcegraph/conc v0.3.0

@@ -9,6 +9,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/carlmjohnson/versioninfo"
 	"github.com/go-logr/logr"
 	"github.com/go-logr/zapr"
 	"github.com/sourcegraph/conc/pool"
@@ -64,14 +65,22 @@ func run() error {
 	var quiet bool
 	var timeout time.Duration
 	var help bool
+	var printVersion bool
 	pflag.BoolVarP(&verbose, "verbose", "v", false, "Enables more verbose logging")
 	pflag.BoolVarP(&quiet, "quiet", "q", false, "Disables all logging, only communication mechanism is exit code")
 	pflag.DurationVarP(&timeout, "timeout", "t", 5*time.Minute, "timeout for all operations")
 	pflag.BoolVarP(&help, "help", "h", false, "Prints CLI usage")
+	pflag.BoolVar(&printVersion, "version", false, "prints build debug data")
 	pflag.Parse()
+
+	versioninfo.AddFlag(nil)
 
 	if help {
 		pflag.Usage()
+		os.Exit(0)
+	}
+	if printVersion {
+		fmt.Println(versioninfo.Short())
 		os.Exit(0)
 	}
 
